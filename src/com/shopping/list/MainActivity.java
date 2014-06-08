@@ -5,7 +5,6 @@ import java.util.Calendar;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -46,7 +45,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		manager = new Manager(this);
-		
+
 		th = (TabHost) findViewById(R.id.tabhost);
 		th.setup();
 
@@ -91,54 +90,6 @@ public class MainActivity extends Activity {
 			}
 		});
 		th.addTab(categories_spec);
-
-		TabSpec alarma_spec = th.newTabSpec("Alarma");
-		alarma_spec.setIndicator("Alarma");
-		alarma_spec.setContent(R.id.alarma_tab);
-		Button btn = (Button)findViewById(R.id.setAlarm);
-		btn.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Calendar cal = Calendar.getInstance();
-
-		        cal.setTimeInMillis(System.currentTimeMillis());
-		        cal.clear();
-		        DatePicker dp = (DatePicker)findViewById(R.id.datePicker1);
-		        TimePicker tp = (TimePicker)findViewById(R.id.timePicker1);
-		        int year = dp.getYear();
-		        int month = dp.getMonth();
-		        int day = dp.getDayOfMonth();
-		        int hour = tp.getCurrentHour();
-		        int minute = tp.getCurrentMinute();
-		        cal.set(year,month,day,hour,minute);
-		        
-		        AlarmManager alarmMgr = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-		        Intent intent = new Intent(getApplicationContext(), AlarmReceiver.class);
-		        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
-		        alarmMgr.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),pendingIntent);
-		        
-		        long time = cal.getTimeInMillis();
-		        manager.setAlarm(String.valueOf(time));
-		        String text = "S'ha fixat l'alarma a les "+hour+":"+minute+" del dia "+year+"."+month+"."+day;
-		        Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT).show();
-		        
-		        TextView tv = (TextView)findViewById(R.id.alarmSetAt);
-		        tv.setText(text);
-			}
-		});
-		long time = manager.getAlarma();
-		if (time > 0) {
-			Calendar cal = Calendar.getInstance();
-			cal.setTimeInMillis(time);
-	        int year = cal.get(Calendar.YEAR);
-	        int month = cal.get(Calendar.MONTH);
-	        int day = cal.get(Calendar.DAY_OF_MONTH);
-	        int hour = cal.get(Calendar.HOUR_OF_DAY);
-	        int minute = cal.get(Calendar.MINUTE);
-			String text = "S'ha fixat l'alarma a les "+hour+":"+minute+" del dia "+year+"."+month+"."+day;
-	        TextView tv = (TextView)findViewById(R.id.alarmSetAt);
-	        tv.setText(text);
-		}
-		th.addTab(alarma_spec);
 
 		th.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
 			public void onTabChanged(String tabId) {
@@ -202,9 +153,6 @@ public class MainActivity extends Activity {
 			break;
 		case 1:
 			inflater.inflate(R.menu.productes, menu);
-			break;
-		case 2:
-			inflater.inflate(R.menu.alarma, menu);
 			break;
 		}
 		return true;

@@ -11,10 +11,6 @@
         <service
             android:name="MainActivity" />
 
-        <receiver
-            android:name="AlarmReceiver" >
-        </receiver>
-
         <activity
             android:name="MainActivity"
             android:label="@string/app_name" >
@@ -37,11 +33,6 @@
         <activity
             android:name="AddProduct"
             android:label="@string/title_activity_add_product" >
-        </activity>
-
-        <activity
-            android:name="AlarmResponse"
-            android:theme="@android:style/Theme.Dialog" >
         </activity>
 
     </application>

@@ -27,11 +27,9 @@ public class Manager extends SQLiteOpenHelper {
 				+ "producte VARCHAR(30)," + "categoria VARCHAR(30),"
 				+ "FOREIGN KEY (categoria) REFERENCES categories(categoria),"
 				+ "PRIMARY KEY (producte))";
-		String CREATE_ALARM_TABLE = "CREATE TABLE alarma (time VARCHAR(30))";
 		db.execSQL(CREATE_LLISTA_TABLE);
 		db.execSQL(CREATE_CATEGORIES_TABLE);
 		db.execSQL(CREATE_PRODUCTES_TABLE);
-		db.execSQL(CREATE_ALARM_TABLE);
 
 		db.execSQL("INSERT INTO categories (categoria) VALUES ('Fruita')");
 		db.execSQL("INSERT INTO productes (categoria, producte) VALUES ('Fruita','Meló')");
@@ -263,27 +261,5 @@ public class Manager extends SQLiteOpenHelper {
 		db.delete("categories", "categoria='" + categoria+ "'", null);
 		db.close();
 	}
-
-	public void setAlarm(String time) {
-		SQLiteDatabase db = this.getWritableDatabase();
-		db.delete("alarma", null, null);
-		ContentValues values = new ContentValues();
-		values.put("time", time);
-		db.insert("alarma", null, values);
-		db.close();
-	}
-
-	public long getAlarma() {
-		SQLiteDatabase db = this.getReadableDatabase();
-		String query = "SELECT time FROM alarma";
-		Cursor cursor = db.rawQuery(query, null);
-		if (cursor != null) {
-			if (cursor.moveToFirst()) {
-				String time = cursor.getString(0);
-				return Long.parseLong(time);
-			}
-		}
-		return -1;
-	}	
 
 }

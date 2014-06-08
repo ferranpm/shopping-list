@@ -11,10 +11,9 @@ public class Ajuda extends Builder {
 			+ "* A la pestanya \"Llista\" hi trobaràs la llista de la compra que tens pendent de fer. Per esborrar-la, fes click al botó de Menú i borra-la.\n"
 			+ "* A la pestanya de \"Categories\" hi ha unes quantes categories, en pots afegir una pulsant la tecla de Menú. També pots afegir un producte a la llista"
 			+ "fent click a la seva categoria i després al producte que hi vulguis afegir.\n"
-			+ "* A la pestanya d'\"Alarma\" hi podràs posar una alarma per a que t'avisi quan has d'anar a fer la compra.\n" +
-			"* Fes un click llarg a qualsevol element d'una llista per eliminar-lo o editar-lo.\n" +
-			"* La llista esta ordenada per categories i en ordre alfabetic dintre de cada una d'elles.\n" +
-			"* Els elements de la llista en vermell són els que encara no s'han comprat, fes click per indicar que ja estan comprats.\n";
+			+ "* Fes un click llarg a qualsevol element d'una llista per eliminar-lo o editar-lo.\n"
+			+ "* La llista esta ordenada per categories i en ordre alfabetic dintre de cada una d'elles.\n"
+			+ "* Els elements de la llista en vermell són els que encara no s'han comprat, fes click per indicar que ja estan comprats.\n";
 
 	public Ajuda(final Context context) {
 		super(context);
