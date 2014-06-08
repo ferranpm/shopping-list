@@ -53,7 +53,8 @@ public class ProductesList extends ListActivity {
         super.onOptionsItemSelected(item);
         switch (item.getItemId()) {
             case R.id.add_product:
-                Intent intent = new Intent(this, AddProduct.class);
+                Intent intent = new Intent(this, AddItem.class);
+                intent.putExtra("item", "Product");
                 intent.putExtra("categoria", categoria);
                 startActivityForResult(intent, PRODUCTE_ADDED_CODE);
                 break;

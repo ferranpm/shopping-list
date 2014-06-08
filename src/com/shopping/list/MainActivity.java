@@ -160,14 +160,14 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
         switch (item.getItemId()) {
             case R.id.delete_list:
                 manager.deleteList();
                 setupLlista();
                 break;
             case R.id.add_category:
-                intent = new Intent(this, AddCategory.class);
+                Intent intent = new Intent(this, AddItem.class);
+                intent.putExtra("item", "Category");
                 startActivityForResult(intent, ADD_CATEGORY_CODE);
                 break;
             case R.id.menu_help:
