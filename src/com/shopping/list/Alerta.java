@@ -4,9 +4,9 @@ import android.app.Activity;
 
 public class Alerta extends Activity {
 
-	public Alerta() {
-		// TODO Auto-generated constructor stub
-		new Ajuda(this);
-	}
+    public Alerta() {
+        // TODO Auto-generated constructor stub
+        new Ajuda(this);
+    }
 
 }
